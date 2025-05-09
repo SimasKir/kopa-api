@@ -82,12 +82,12 @@ app.get('/data', validateApiKey, (req, res) => {
 });
 
 app.post('/update', validateApiKey, (req, res) => {
-  const { id, name, value } = req.body;
+  const { id, name, value, group } = req.body;
   const index = dataStore.findIndex(d => d.id === id);
   if (index >= 0) {
-    dataStore[index] = { id, name, value };
+    dataStore[index] = { id, name, value, group };
   } else {
-    dataStore.push({ id, name, value });
+    dataStore.push({ id, name, value, group });
   }
 
   saveDataToFile();
@@ -96,13 +96,13 @@ app.post('/update', validateApiKey, (req, res) => {
 });
 
 app.post('/append', validateApiKey, (req, res) => {
-    const { name, value } = req.body;
+    const { name, value, group } = req.body;
   
     const nextId = dataStore.length > 0
       ? dataStore[dataStore.length - 1].id + 1 
       : 1;
   
-    const newItem = { id: nextId, name, value };
+    const newItem = { id: nextId, name, value, group };
     dataStore.push(newItem);
   
     saveDataToFile();
@@ -144,7 +144,7 @@ app.get('/events', (req, res) => {
     res.json({ success: true, deleted: deletedItem });
   });
 
-  setInterval(backupDataToFile, 1 * 60 * 1000);
+  setInterval(backupDataToFile, 30 * 60 * 1000);
 
   app.listen(PORT, (err) => {
     if (err) {
