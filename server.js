@@ -19,6 +19,8 @@ if (!fs.existsSync(backupDir)) {
 
 function validateApiKey(req, res, next) {
   const providedKey = req.headers['x-api-key'];
+  console.log(providedKey);
+  console.log(process.env.API_KEY);
   if (providedKey !== process.env.API_KEY) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
