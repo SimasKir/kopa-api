@@ -44,11 +44,12 @@ app.get('/data', validateApiKey, (req, res) => {
 
 // POST /append
 app.post('/append', validateApiKey, async (req, res) => {
-  const { name, value, group } = req.body;
+  const { name, position, group } = req.body;
   if (!group) return res.status(400).json({ error: 'Group is required' });
+  if (typeof position !== 'number') return res.status(400).json({ error: 'Position must be a number' });
 
   const nextId = dataStore.length > 0 ? dataStore[dataStore.length - 1].id + 1 : 1;
-  const newItem = { id: nextId, name, value, group };
+  const newItem = { id: nextId, name, position, group };
   dataStore.push(newItem);
 
   await syncDataStoreToSupabase(dataStore);
@@ -58,14 +59,15 @@ app.post('/append', validateApiKey, async (req, res) => {
 
 // POST /update
 app.post('/update', validateApiKey, async (req, res) => {
-  const { id, name, value, group } = req.body;
+  const { id, name, position, group } = req.body;
   if (!group) return res.status(400).json({ error: 'Group is required' });
+  if (typeof position !== 'number') return res.status(400).json({ error: 'Position must be a number' });
 
   const index = dataStore.findIndex(d => d.id === id);
   if (index >= 0) {
-    dataStore[index] = { id, name, value, group };
+    dataStore[index] = { id, name, position, group };
   } else {
-    dataStore.push({ id, name, value, group });
+    dataStore.push({ id, name, position, group });
   }
 
   await syncDataStoreToSupabase(dataStore);

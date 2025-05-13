@@ -2,25 +2,25 @@
   {
     "id": 1,
     "name": "Updated Item",
-    "value": "New Value",
+    "value": 1,
     "group": "group1"
   },
   {
     "id": 2,
     "name": "Simas/Egle",
-    "value": "New Value loool",
+    "value": 2,
     "group": "group1"
   },
   {
     "id": 3,
     "name": "John/hdfgfd",
-    "value": "New Value l",
+    "value": 3,
     "group": "group2"
   },
   {
     "id": 4,
     "name": "Egle/Kazkas",
-    "value": "New Value l",
+    "value": 4,
     "group": "group2"
   }
 ]
