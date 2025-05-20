@@ -1,26 +1,14 @@
-[
-  {
-    "id": 1,
-    "name": "Updated Item",
-    "value": 1,
-    "group": "group1"
-  },
-  {
-    "id": 2,
-    "name": "Simas/Egle",
-    "value": 2,
-    "group": "group1"
-  },
-  {
-    "id": 3,
-    "name": "John/hdfgfd",
-    "value": 3,
-    "group": "group2"
-  },
-  {
-    "id": 4,
-    "name": "Egle/Kazkas",
-    "value": 4,
-    "group": "group2"
-  }
-]
+{
+  "women": [
+    { "id": 1, "name": "Egle/Kazkas", "value": 1 },
+    { "id": 2, "name": "Jou/Kazkas", "value": 2 }
+  ],
+  "men": [ 
+    { "id": 3, "name": "Sim/Simas", "value": 1 },
+    { "id": 4, "name": "Sam/sim", "value": 2 } 
+  ],
+  "mix": [ 
+    { "id": 5, "name": "egles/Kazkas", "value": 1 },
+    { "id": 6, "name": "Egle/Simas", "value": 2 } 
+  ]
+}
